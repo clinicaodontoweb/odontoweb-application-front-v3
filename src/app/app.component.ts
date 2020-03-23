@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'odontoweb-frontend';
+  title = 'odontoweb-application-front-v3';
 }

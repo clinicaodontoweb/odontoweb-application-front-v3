@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'odontoweb-frontend'`, () => {
+  it(`should have as title 'odontoweb-application-front-v3'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('odontoweb-frontend');
+    expect(app.title).toEqual('odontoweb-application-front-v3');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('odontoweb-frontend app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('odontoweb-application-front-v3 app is running!');
   });
 });
