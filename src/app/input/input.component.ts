@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MyErrorStateMatcher } from './MyErrorStateMatcher'
-import {FormControl, Validators} from '@angular/forms'
+import {FormControl, Validators, FormGroup} from '@angular/forms'
 
 @Component({
   selector: 'app-input',
@@ -13,6 +13,16 @@ export class InputComponent {
     Validators.required,
     Validators.email,
   ]);
+
+  passwordFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2)
+  ])
+
+  exampleForm = new FormGroup({
+    emailFormControl: new FormControl(),
+    passwordFormControl: new FormControl()
+  });
 
   matcher = new MyErrorStateMatcher();
 
