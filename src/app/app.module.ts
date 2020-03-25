@@ -6,22 +6,34 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule, ShowOnDirtyErrorStateMatcher, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms'
 import { LoginComponent } from './login/login.component';
+import { InputComponent } from './input/input.component';
+
+import { MyErrorStateMatcher } from './input/MyErrorStateMatcher'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MyErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
