@@ -7,15 +7,13 @@
 
     &__fields {
         border: 1px #3f51b5 solid;
-        padding: 80px;
-    }
-
-    &__password {
-        margin-bottom: 40px;
+        padding: 55px 80px 130px 80px;
     }
 
     &__button {
         float: right;
+        width: 100%;
+        margin-top: 25px;
     }
 
 }
