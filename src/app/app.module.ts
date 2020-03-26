@@ -8,17 +8,21 @@ import { HeaderComponent } from './header/header.component';
 
 import { MatToolbarModule, ShowOnDirtyErrorStateMatcher, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms'
+import { MatButtonModule } from '@angular/material/button';
+
 import { LoginComponent } from './login/login.component';
 import { InputComponent } from './input/input.component';
 
-import { MyErrorStateMatcher } from './input/MyErrorStateMatcher'
+import { MyErrorStateMatcher } from './input/MyErrorStateMatcher';
+import { ButtonComponent } from './button/button.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    InputComponent
+    InputComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,8 @@ import { MyErrorStateMatcher } from './input/MyErrorStateMatcher'
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule
   ],
   providers: [
     {
