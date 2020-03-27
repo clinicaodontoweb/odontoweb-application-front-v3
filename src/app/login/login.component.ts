@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { MyErrorStateMatcher } from './../input/MyErrorStateMatcher'
 import {FormControl, Validators, FormGroup} from '@angular/forms'
-
+import { AuthService } from './../auth.service'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent {
+
+  authService: AuthService
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -27,8 +30,10 @@ export class LoginComponent {
 
   matcher = new MyErrorStateMatcher();
 
+  /*
   login(email: string, password: string) {
-    console.log('entrou login')
+    this.authService.login(email, password)
   }
+  */
 
 }
