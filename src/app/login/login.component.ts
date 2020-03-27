@@ -27,4 +27,8 @@ export class LoginComponent {
 
   matcher = new MyErrorStateMatcher();
 
+  login(email: string, password: string) {
+    console.log('entrou login')
+  }
+
 }

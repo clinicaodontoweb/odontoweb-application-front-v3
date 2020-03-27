@@ -6,7 +6,7 @@
         <div>
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
-            <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+            <input #email matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
                   placeholder="Ex. pat@example.com">
             <mat-hint>Errors appear instantly!</mat-hint>
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -21,7 +21,7 @@
       <div>
         <mat-form-field class="example-full-width">
           <mat-label>Password</mat-label>
-          <input matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+          <input #password matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
                 placeholder="Senha">
           <mat-hint>Errors appear instantly!</mat-hint>
           <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
@@ -34,7 +34,7 @@
       </div>
 
   
-      <button class="input__button" mat-raised-button color="primary">Entrar</button>
+      <button (click)="login(email.value, password.value)" class="input__button" mat-raised-button color="primary">Entrar</button>
   
   </div>
   
