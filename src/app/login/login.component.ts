@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MyErrorStateMatcher } from './../input/MyErrorStateMatcher'
+import {FormControl, Validators, FormGroup} from '@angular/forms'
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor() { }
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
-  ngOnInit() {
-  }
+  passwordFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2)
+  ])
+
+  exampleForm = new FormGroup({
+    emailFormControl: new FormControl(),
+    passwordFormControl: new FormControl()
+  });
+
+  matcher = new MyErrorStateMatcher();
 
 }
