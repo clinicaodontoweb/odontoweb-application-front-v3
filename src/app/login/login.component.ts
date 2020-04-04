@@ -11,7 +11,7 @@ import { AuthService } from './../auth.service'
 
 export class LoginComponent {
 
-  authService: AuthService
+  constructor(private authService: AuthService) {}
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -30,10 +30,9 @@ export class LoginComponent {
 
   matcher = new MyErrorStateMatcher();
 
-  /*
   login(email: string, password: string) {
-    this.authService.login(email, password)
+    this.authService.teste(email, password)
+
   }
-  */
 
 }

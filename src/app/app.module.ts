@@ -11,17 +11,18 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button';
 
 import { LoginComponent } from './login/login.component';
-import { InputComponent } from './input/input.component';
 
 import { MyErrorStateMatcher } from './input/MyErrorStateMatcher';
 import { ButtonComponent } from './button/button.component'
+
+import { AuthService } from './auth.service'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    InputComponent,
     ButtonComponent
   ],
   imports: [
@@ -32,12 +33,15 @@ import { ButtonComponent } from './button/button.component'
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [
     {
-      provide: MyErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher
-    }
+      provide: MyErrorStateMatcher,
+      useClass: ShowOnDirtyErrorStateMatcher
+    },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

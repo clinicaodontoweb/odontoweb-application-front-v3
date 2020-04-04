@@ -3,27 +3,32 @@ import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from
 import { CanActivate, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { tap, shareReplay } from 'rxjs/operators';
+import { tap, shareReplay, share } from 'rxjs/operators';
 
 import * as jwtDecode from 'jwt-decode';
 import * as moment from 'moment';
 
 import { environment } from '../environments/environment';
 
+import { JWTPayload } from './jwtpayload'
+
+import { map } from 'rxjs/operators';
+
 @Injectable()
 export class AuthService {
 
-    private api = 'http://localhost:8000/autentication-service/'
+    private api = 'http://localhost:3000/token'
 
     constructor(private http: HttpClient) {}
 
     setSession(authResult) {
         const token = authResult.token;
-        //const payload = <JWTPayload> jwtDecode(token)
-        //const expiresAt = moment.unix(payload.exp)
+        const payload = <JWTPayload> jwtDecode(token)
+        console.log('payload', payload)
+        const expiresAt = moment.unix(payload.exp)
 
-        //localStorage.setItem('token', authResult.token)
-        //localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()))
+        localStorage.setItem('token', authResult.token)
+        localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()))
     }
 
     login(email: string, password: string) {
@@ -36,6 +41,18 @@ export class AuthService {
         )*/
     }
 
+    teste(email: string, password: string) {
+        
+        return this.http.get(this.api)
+            .subscribe(res => this.setSession(res))
+        
+        /*.pipe(
+            .tap(response => this.setSession(response)),
+            shareReplay()
+        )*/
+    }
+
+    /*
     get token(): string {
         return localStorage.getItem('token')
     }
@@ -52,6 +69,6 @@ export class AuthService {
     isLoggedOut(){
     //    return !this.isLoggedIn()
     }
-
+    */
 
 }
