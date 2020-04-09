@@ -17,13 +17,15 @@ import { ButtonComponent } from './button/button.component'
 
 import { AuthService } from './auth.service'
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    ButtonComponent
+    ButtonComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
       provide: MyErrorStateMatcher,
       useClass: ShowOnDirtyErrorStateMatcher
     },
-    AuthService
+    AuthService,
+    HomeComponent
   ],
   bootstrap: [AppComponent]
 })

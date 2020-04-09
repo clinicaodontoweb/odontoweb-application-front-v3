@@ -5,12 +5,8 @@ import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap, shareReplay, share } from 'rxjs/operators';
 
-import * as jwtDecode from 'jwt-decode';
-import * as moment from 'moment';
-
 import { environment } from '../environments/environment';
 
-import { JWTPayload } from './jwtpayload'
 
 import { map } from 'rxjs/operators';
 
@@ -21,14 +17,12 @@ export class AuthService {
 
     constructor(private http: HttpClient) {}
 
-    setSession(authResult) {
-        const token = authResult.token;
-        const payload = <JWTPayload> jwtDecode(token)
-        console.log('payload', payload)
-        const expiresAt = moment.unix(payload.exp)
+    isLoggedIn() {
+        return this.getToken()
+    }
 
-        localStorage.setItem('token', authResult.token)
-        localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()))
+    getToken() {
+        return localStorage.getItem('token')
     }
 
     login(email: string, password: string) {
@@ -41,34 +35,19 @@ export class AuthService {
         )*/
     }
 
+    setToken(res) {
+        localStorage.setItem('token', res.token)
+    }
+
     teste(email: string, password: string) {
         
         return this.http.get(this.api)
-            .subscribe(res => this.setSession(res))
+            .subscribe(res => this.setToken(res))
         
         /*.pipe(
             .tap(response => this.setSession(response)),
             shareReplay()
         )*/
     }
-
-    /*
-    get token(): string {
-        return localStorage.getItem('token')
-    }
-    
-    logout() {
-        localStorage.removeItem('token')
-        localStorage.removeItem('expires_at')
-    }
-
-    //isLoggedIn() {
-    //    return moment().isBefore(expiration())
-    //}
-
-    isLoggedOut(){
-    //    return !this.isLoggedIn()
-    }
-    */
 
 }
