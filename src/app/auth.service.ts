@@ -25,11 +25,6 @@ export class AuthService {
             .pipe(
                 tap(res => this.setToken(res)),
                 mapTo(true),
-                /*catchError(error => {
-                    console.log(error)
-                    return false
-                })
-                */
             )
     }
 

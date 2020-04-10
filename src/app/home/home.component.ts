@@ -16,6 +16,7 @@ export class HomeComponent implements CanActivate {
   }
 
   logoff() {
+    console.log('entrou')
     this.authService.logoff()
     return this.router.navigate(['/login'])
   }
