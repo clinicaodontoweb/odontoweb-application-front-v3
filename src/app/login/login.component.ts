@@ -32,7 +32,12 @@ export class LoginComponent {
   matcher = new MyErrorStateMatcher();
 
   login(email: string, password: string) {
-    this.authService.teste(email, password)
+    this.authService.login(email, password)
+      .subscribe(sucess => {
+        if (sucess) {
+          this.router.navigate(['/home'])
+        }
+      })
   }
 
 }

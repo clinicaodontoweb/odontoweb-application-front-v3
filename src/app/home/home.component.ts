@@ -15,6 +15,10 @@ export class HomeComponent implements CanActivate {
   ngOnInit() {
   }
 
+  logoff() {
+    this.authService.logoff()
+    return this.router.navigate(['/login'])
+  }
 
   canActivate() {
     console.log('home component')
