@@ -23,10 +23,10 @@ export class HomeComponent implements CanActivate {
 
   canActivate() {
     console.log('home component')
-    if (this.authService.isLoggedIn()) {
+    if (this.authService.getToken()) {
       return this.router.navigate(['/home'])
     }
-    return !this.authService.isLoggedIn()
+    return !this.authService.getToken()
   }
 
 }

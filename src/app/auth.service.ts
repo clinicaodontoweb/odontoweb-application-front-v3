@@ -12,7 +12,7 @@ export class AuthService {
 
     constructor(private http: HttpClient) {}
 
-    isLoggedIn() {
+    getToken() {
         return localStorage.getItem('token')
     }
 
